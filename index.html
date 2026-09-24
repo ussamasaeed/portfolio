@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Usama Saeed — Data Scientist</title>
+<style>
+  :root{
+    --bg:#FAFAF7;
+    --ink:#181A1F;
+    --sub:#5B5F6B;
+    --line:#E4E2DB;
+    --accent:#3452B4;
+    --card:#F2F0E9;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14151A; --ink:#EFEFEA; --sub:#9A9DA8; --line:#2A2C33; --accent:#7C93E8; --card:#1C1E25;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#14151A; --ink:#EFEFEA; --sub:#9A9DA8; --line:#2A2C33; --accent:#7C93E8; --card:#1C1E25;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px); scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Inter',ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;}
+  a{color:inherit;}
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+  header.top{
+    position:sticky; top:0; top:env(safe-area-inset-top,0px);
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    z-index:10;
+  }
+  .topbar{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:760px; margin:0 auto;}
+  .brand{font-weight:600; letter-spacing:-0.01em; font-size:15px;}
+  nav a{margin-left:20px; font-size:14px; text-decoration:none; color:var(--sub);}
+  nav a:hover{color:var(--ink);}
+
+  section{padding:64px 0;}
+  section:first-of-type{padding-top:56px;}
+  .hero h1{
+    font-size:clamp(32px,6vw,46px); line-height:1.15; letter-spacing:-0.02em; margin:0 0 20px;
+    font-weight:600; max-width:15ch;
+  }
+  .hero p.lede{font-size:17px; color:var(--sub); max-width:52ch; margin:0 0 28px;}
+  .hero .meta{font-size:13px; color:var(--sub);}
+  .hero .meta a{text-decoration:underline; text-underline-offset:3px;}
+  .cta-row{display:flex; gap:14px; margin-top:28px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block; padding:10px 18px; border-radius:3px; font-size:14px; text-decoration:none;
+    border:1px solid var(--ink);
+  }
+  .btn.primary{background:var(--ink); color:var(--bg);}
+  .btn.ghost{color:var(--ink);}
+
+  h2.h{font-size:13px; text-transform:none; letter-spacing:0; color:var(--sub); font-weight:500; margin:0 0 28px;}
+  h2.h::before{content:"— "; color:var(--accent);}
+
+  .skills-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px 28px;}
+  @media (max-width:520px){.skills-grid{grid-template-columns:1fr;}}
+  .skill-group h3{font-size:14px; margin:0 0 8px; font-weight:600;}
+  .skill-group p{margin:0; color:var(--sub); font-size:14px;}
+
+  .project{border-top:1px solid var(--line); padding:28px 0;}
+  .project:last-child{border-bottom:1px solid var(--line);}
+  .project-head{display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap;}
+  .project h3{margin:0; font-size:17px; font-weight:600; letter-spacing:-0.01em;}
+  .project a.repo{font-size:13px; color:var(--accent); text-decoration:none; white-space:nowrap;}
+  .project a.repo:hover{text-decoration:underline;}
+  .project p{margin:10px 0 12px; color:var(--sub); font-size:14.5px; max-width:60ch;}
+  .stack{display:flex; flex-wrap:wrap; gap:8px;}
+  .stack span{font-size:11.5px; color:var(--sub); border:1px solid var(--line); padding:3px 8px; border-radius:3px;}
+  .tag-wip{font-size:11.5px; color:var(--accent); border:1px solid var(--accent); padding:3px 8px; border-radius:3px;}
+
+  .exp-item{margin-bottom:8px;}
+  .exp-head{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .exp-head h3{margin:0; font-size:16px; font-weight:600;}
+  .exp-head span{font-size:13px; color:var(--sub); white-space:nowrap;}
+  .exp-org{color:var(--sub); font-size:14px; margin:2px 0 10px;}
+  ul.exp-list{margin:0; padding-left:18px; color:var(--sub); font-size:14.5px;}
+  ul.exp-list li{margin-bottom:5px;}
+
+  .edu-cert{display:grid; grid-template-columns:1.1fr 1fr; gap:40px;}
+  @media (max-width:640px){.edu-cert{grid-template-columns:1fr; gap:32px;}}
+  .edu-cert h3{font-size:14px; margin:0 0 14px; font-weight:600;}
+  .edu-block p{margin:0 0 4px; font-size:14.5px;}
+  .edu-block .sub{color:var(--sub); font-size:13px;}
+  ul.cert-list{list-style:none; margin:0; padding:0; font-size:14px; color:var(--sub);}
+  ul.cert-list li{padding:7px 0; border-top:1px solid var(--line);}
+  ul.cert-list li:first-child{border-top:none;}
+
+  footer{border-top:1px solid var(--line); padding:40px 0 56px;}
+  footer .row{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px; font-size:13px; color:var(--sub);}
+  footer a{text-decoration:underline; text-underline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="topbar">
+    <div class="brand">Usama Saeed</div>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <h1>I build machine learning systems that turn raw data into decisions.</h1>
+    <p class="lede">Data Scientist focused on computer vision, LLM-backed applications, and ETL pipelines — currently completing an MDS and shipping production-style projects in Python, TensorFlow, and PostgreSQL.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="#work">See the work</a>
+      <a class="btn ghost" href="mailto:ussamasaeed178@gmail.com">Get in touch</a>
+    </div>
+    <p class="meta" style="margin-top:32px;">Sadiqabad, Punjab, Pakistan &nbsp;·&nbsp; +92 300 1788451 &nbsp;·&nbsp;
+      <a href="https://github.com/ussamasaeed" target="_blank" rel="noopener">GitHub</a> &nbsp;·&nbsp;
+      <a href="https://www.kaggle.com/usamasaeed451" target="_blank" rel="noopener">Kaggle</a> &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/usama-saeed-b9174937a" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+  </section>
+
+  <section id="work">
+    <h2 class="h">Projects</h2>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>Canal Monitoring &amp; Drift Detection System</h3>
+        <a class="repo" href="https://github.com/ussamasaeed/AI_Powered_Canals_Monitoring_System.git" target="_blank" rel="noopener">Repo ↗</a>
+      </div>
+      <p>An AI-ready web interface for real-time surveillance of irrigation canals and water courses, built to replace manual patrolling with automated digital oversight and cut water theft and distribution inequities.</p>
+      <div class="stack"><span>FastAPI</span><span>LLM</span><span>Python</span><span>PostgreSQL</span><span>Vector DB</span><span>Mapping</span></div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>Traffic Violation &amp; Vehicle Tracking System</h3>
+        <a class="repo" href="https://github.com/ussamasaeed/Traffic_Violation_System.git" target="_blank" rel="noopener">Repo ↗</a>
+      </div>
+      <p>Real-time computer vision pipeline reaching 92% detection accuracy by fine-tuning YOLOv8 on custom training data and integrating DeepSORT for multi-object tracking, with outputs stored in MongoDB for downstream analysis.</p>
+      <div class="stack"><span>YOLOv8</span><span>DeepSORT</span><span>Python</span><span>MongoDB</span></div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>Movie Recommendation System</h3>
+        <a class="repo" href="https://github.com/ussamasaeed/Movies_Recommendations_System.git" target="_blank" rel="noopener">Repo ↗</a>
+      </div>
+      <p>Content-based filtering engine using TF-IDF feature vectors over a normalized, indexed PostgreSQL schema — cut recommendation latency by 30%.</p>
+      <div class="stack"><span>Python</span><span>Scikit-learn</span><span>PostgreSQL</span></div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>Airline ETL &amp; Data Warehouse Pipeline</h3>
+        <a class="repo" href="https://github.com/ussamasaeed/Airlines_Data_Warehouse.git" target="_blank" rel="noopener">Repo ↗</a>
+      </div>
+      <p>End-to-end ETL pipeline ingesting 500K+ records from heterogeneous sources into a PostgreSQL warehouse, cutting report generation time by 45% through schema normalization and query optimization.</p>
+      <div class="stack"><span>Python</span><span>PostgreSQL</span><span>MySQL</span><span>MongoDB</span><span>Pentaho</span></div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>Property Sale Data Analysis &amp; Visualization</h3>
+        <a class="repo" href="https://github.com/ussamasaeed/Allegheny-County-Property-Sale-analysis.git" target="_blank" rel="noopener">Repo ↗</a>
+      </div>
+      <p>Pricing-trend models across 80K+ transactions with 87% directional accuracy, backed by SQL queries and stored procedures powering interactive dashboards for stakeholders.</p>
+      <div class="stack"><span>Python</span><span>PostgreSQL</span><span>Pandas</span><span>Seaborn</span></div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>Multi-Agent Chatbot System</h3>
+        <a class="repo" href="https://github.com/ussamasaeed/Chatbot_and_AI_Agent_and_its_Sub_Agent.git" target="_blank" rel="noopener">Repo ↗</a>
+      </div>
+      <p>Multi-agent chatbot architecture with sub-agents, grounding responses in live database queries via structured retrieval — improved factual accuracy by 38%. <span class="tag-wip" style="margin-left:4px;">In progress</span></p>
+      <div class="stack"><span>Python</span><span>LangChain</span><span>LLMs</span></div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>YouTube Chatbot with RAG</h3>
+        <a class="repo" href="https://github.com/ussamasaeed/YouTube_chatbot_with_RAG.git" target="_blank" rel="noopener">Repo ↗</a>
+      </div>
+      <p>Lets a user drop in a YouTube URL and ask questions about the video — pulls the transcript via the YouTube API and answers using retrieval-augmented generation.</p>
+      <div class="stack"><span>Python</span><span>LangChain</span><span>LLMs</span><span>Streamlit</span></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2 class="h">Experience</h2>
+    <div class="exp-item">
+      <div class="exp-head">
+        <h3>Back-End AI Engineering Intern</h3>
+        <span>Aug 2026 – Present</span>
+      </div>
+      <div class="exp-org">FlyRank.ai · self-paced, weekly deliverables</div>
+      <ul class="exp-list">
+        <li>Build and expose APIs for internal data and model services</li>
+        <li>Design data-flow pipelines connecting ingestion, processing, and storage</li>
+        <li>Integrate LLMs into backend workflows and handle failure/error cases</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="h">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>AI &amp; Machine Learning</h3>
+        <p>Machine learning, deep learning (TensorFlow, PyTorch, Scikit-learn), computer vision (YOLO, OpenCV), LLMs, LangChain &amp; AI agents</p>
+      </div>
+      <div class="skill-group">
+        <h3>Data Engineering &amp; Analytics</h3>
+        <p>ETL pipelines, statistics &amp; experimental design, data visualization</p>
+      </div>
+      <div class="skill-group">
+        <h3>Languages &amp; Databases</h3>
+        <p>Python, SQL, PostgreSQL, MySQL, MongoDB</p>
+      </div>
+      <div class="skill-group">
+        <h3>Cloud &amp; DevOps</h3>
+        <p>AWS, Docker, Kubernetes, Databricks, production ML pipeline integration</p>
+      </div>
+      <div class="skill-group">
+        <h3>Also comfortable in</h3>
+        <p>C++, Java, C#, Kotlin, JavaScript, HTML/CSS</p>
+      </div>
+      <div class="skill-group">
+        <h3>Languages spoken</h3>
+        <p>English (proficient), Urdu (native), Punjabi (native)</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2 class="h">Education &amp; Certifications</h2>
+    <div class="edu-cert">
+      <div class="edu-block">
+        <h3>Education</h3>
+        <p>Bachelor of Data Science</p>
+        <p class="sub">Khwaja Fareed University of Engineering &amp; IT, Rahim Yar Khan · Jan 2022 – Dec 2025</p>
+      </div>
+      <div class="edu-block">
+        <h3>Certifications &amp; Training</h3>
+        <ul class="cert-list">
+          <li>Associate AI Engineer for Data Scientists — DataCamp</li>
+          <li>Advanced Machine Learning — Kaggle</li>
+          <li>Advanced Deep Learning — Kaggle</li>
+          <li>Machine Learning Explainability — Kaggle</li>
+          <li>Intro to Deep Learning — Kaggle</li>
+          <li>Geospatial Analysis — Kaggle</li>
+          <li>Google Data Analytics Professional Certificate — Coursera</li>
+          <li>Hybrid RAG Solution — AWS</li>
+          <li>AWS Cloud Practitioner</li>
+          <li>Data Is Everywhere — Google</li>
+          <li>Alibaba AI Hackathon 2026</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap row">
+    <span>© 2026 Usama Saeed</span>
+    <span><a href="mailto:ussamasaeed178@gmail.com">ussamasaeed178@gmail.com</a> · +92 300 1788451</span>
+  </div>
+</footer>
+
+</body>
+</html>
